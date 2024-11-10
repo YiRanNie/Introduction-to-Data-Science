@@ -1,6 +1,7 @@
 import pandas as pd
 import re
 import jieba
+import tqdm
 from sklearn.feature_extraction.text import CountVectorizer, TfidfVectorizer
 from sklearn.model_selection import train_test_split
 
@@ -28,6 +29,7 @@ def clean_text(text):
     return ' '.join(r_words)
 
 pd_ratings = pd.read_csv('./datasets/ratings.csv')
+
 
 # 删除重复行
 pd_ratings = pd_ratings.drop_duplicates()
@@ -100,7 +102,7 @@ X_test_tfidf_df = pd.DataFrame(X_test_tfidf.toarray(), columns=tfidf_feature_nam
 X_train_tfidf_df['rating'] = y_train_tfidf.reset_index(drop=True)
 X_test_tfidf_df['rating'] = y_test_tfidf.reset_index(drop=True)
 
-X_train_count_df.to_csv('./datasets/train_count_set.csv', index=False, encoding='utf-8')
-X_test_count_df.to_csv('./datasets/test_count_set.csv', index=False, encoding='utf-8')
-X_train_tfidf_df.to_csv('./datasets/train_tfidf_set.csv', index=False, encoding='utf-8')
+X_train_count_df.to_csv('./datasets/train_count_set.csv', index=False, encoding='utf-8')     #训练集，用于模型的训练,计算每个单词在文档中出现的次数
+X_test_count_df.to_csv('./datasets/test_count_set.csv', index=False, encoding='utf-8')       #测试集，用于评估模型的性能
+X_train_tfidf_df.to_csv('./datasets/train_tfidf_set.csv', index=False, encoding='utf-8')    
 X_test_tfidf_df.to_csv('./datasets/test_tfidf_set.csv', index=False, encoding='utf-8')
