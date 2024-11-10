@@ -1,7 +1,7 @@
 import pandas as pd
 
-train_count_set = pd.read_csv('datasets/train_count_set.csv')
-print(train_count_set.head())
+train_count_set = pd.read_csv('datasets/ratings.csv')
+print(train_count_set.head(50))
 
 
 # 数据格式示例
