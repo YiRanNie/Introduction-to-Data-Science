@@ -6,7 +6,8 @@ from sklearn.neighbors import KNeighborsClassifier
 
 print("开始加载数据...")
 # 加载训练数据集
-train_df = pd.read_csv('datasets/train_tfidf_set_min.csv')
+train_df = pd.read_csv('datasets/train_tfidf_set_4.csv')
+
 
 print("准备特征和标签...")
 # 准备特征和标签
@@ -32,9 +33,9 @@ knn_model.fit(X_train, y_train)
 
 # 保存模型
 import joblib
-joblib.dump(logistic_model, 'models/logistic_model.pkl')
-joblib.dump(decision_tree_model, 'models/decision_tree_model.pkl')
-joblib.dump(svm_model, 'models/svm_model.pkl')
-joblib.dump(knn_model, 'models/knn_model.pkl')
+joblib.dump(logistic_model, 'logistic_model_4.pkl')
+joblib.dump(decision_tree_model, 'decision_tree_model_4.pkl')
+joblib.dump(svm_model, 'svm_model_4.pkl')
+joblib.dump(knn_model, 'knn_model_4.pkl')
 
 print("模型训练完成并保存。")
