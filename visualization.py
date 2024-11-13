@@ -128,7 +128,6 @@ restaurant_ratings['差评率'] = restaurant_ratings['差评数'] / restaurant_r
 top10_restaurants = restaurant_ratings.sort_values(by='好评率', ascending=False).head(10)
 top10_names = top10_restaurants.index  # 获取Top 10餐馆的名称列表
 
-# 任务 10.1：可视化Top 10餐馆的好评/差评比率柱状图
 top10_restaurants[['好评率', '差评率']].plot(kind='bar', stacked=True, figsize=(10, 6), color=['skyblue', 'salmon'])
 plt.title("Top 10 餐馆的好评/差评比率（总评价数 > 300）")
 plt.xlabel("餐馆名称")
@@ -139,7 +138,6 @@ plt.tight_layout()
 plt.savefig("top10_restaurants_rating_ratio.png")  # 保存图像
 plt.show()
 
-# 任务 10.2：Top 10 餐馆随时间变化的好评率（按年聚合）
 # 转换时间戳为日期格式
 merged_data['timestamp'] = pd.to_datetime(merged_data['timestamp'], unit='ms')
 
@@ -172,7 +170,6 @@ plt.tight_layout()
 plt.savefig("top10_restaurants_yearly_rating_trend.png")  # 保存图像
 plt.show()
 
-# 任务 10.3：Top 10 餐馆的环境评分、口味评分、服务评分的雷达图
 # 计算环境评分、口味评分和服务评分的平均值
 mean_scores = top10_data.groupby('name')[['rating_env', 'rating_flavor', 'rating_service']].mean()
 
